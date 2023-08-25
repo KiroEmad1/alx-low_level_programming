@@ -1,37 +1,23 @@
-#include "lists.h"
+#include "variadic_functions.h"
+
 
 /**
- * _strlen - returns the length of a string
- * @s: the string whose length to check
+ * sum_them_all - sums variable arguments
+ * @n: the number of arguments
+ * @...: the integers to sum
  *
- * Return: integer length of string
+ * Return: the integer sum
  */
-int _strlen(char *s)
+int sum_them_all(const unsigned int n, ...)
 {
-	int i = 0;
+	int s = 0, i = n;
+	va_list ap;
 
-	if (!s)
+	if (!n)
 		return (0);
-	while (*s++)
-		i++;
-	return (i);
-}
-
-/**
- * print_list - prints a linked lists
- * @h: pointer to first node
- *
- * Return: size of list
- */
-size_t print_list(const list_t *h)
-{
-	size_t i = 0;
-
-	while (h)
-	{
-		printf("[%d] %s\n", _strlen(h->str), h->str ? h->str : "(nil)");
-		h = h->next;
-		i++;
-	}
-	return (i);
+	va_start(ap, n);
+	while (i--)
+		s += va_arg(ap, int);
+	va_end(ap);
+	return (s);
 }

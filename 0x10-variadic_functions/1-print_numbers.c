@@ -1,19 +1,27 @@
-#include "lists.h"
+#include "variadic_functions.h"
+
 
 /**
- * list_len - determines length of linked list
- * @h: pointer to first node
+ * print_numbers - prints numbers with separator
+ * @separator: the string separator
+ * @n: the number of arguments
+ * @...: the integers to print
  *
- * Return: size of list
+ * Return: void
  */
-size_t list_len(const list_t *h)
+void print_numbers(const char *separator, const unsigned int n, ...)
 {
-	size_t i = 0;
+	int i = n;
+	va_list ap;
 
-	while (h)
+	if (!n)
 	{
-		h = h->next;
-		i++;
+		printf("\n");
+		return;
 	}
-	return (i);
+	va_start(ap, n);
+	while (i--)
+		printf("%d%s", va_arg(ap, int),
+			i ? (separator ? separator : "") : "\n");
+	va_end(ap);
 }
