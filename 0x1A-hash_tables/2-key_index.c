@@ -10,11 +10,5 @@
  */
 unsigned long int key_index(const unsigned char *key, unsigned long int size)
 {
-    /* Get the hash value using the djb2 algorithm */
-    unsigned long int hash_value = hash_djb2(key);
-
-    /* Modulo the hash value by the size of the array to get the index */
-    unsigned long int index = hash_value % size;
-
-    return index;
+        return (hash_djb2(key) % size);
 }
