@@ -7,22 +7,25 @@
  *
  * Return: A pointer to the modified string.
  */
-char *string_toupper(char *str) {
-    char *p = str;
+char *string_toupper(char *str)
+{
+char *p = str;
 
-    while (*p) {
-        *p = toupper(*p);
-        p++;
-    }
-
-    return str;
+while (*p)
+{
+	*p = toupper(*p);
+	p++;
 }
 
-int main() {
-    char s[] = "Hello, World!";
-    printf("Original: %s\n", s);
-    printf("Uppercase: %s\n", string_toupper(s));
-
-    return 0;
+return (str);
 }
 
+int main(void)
+{
+	char s[] = "Hello, World!";
+
+	printf("Original: %s\n", s);
+	printf("Uppercase: %s\n", string_toupper(s));
+
+	return (0);
+}
